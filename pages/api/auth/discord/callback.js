@@ -64,6 +64,7 @@ export default withIronSessionApiRoute(async (req, res) => {
 
     res.redirect(`/?currentStep=2&session=${req.query.state}`)
     } catch (e) {
+      alert(e)
       console.error(e)
       res.redirect('/')
       return
