@@ -1,0 +1,58 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id             Int              @id @default(autoincrement())
+  first_name     String?          @db.VarChar(250)
+  last_name      String?          @db.VarChar(250)
+  company        String?          @db.VarChar(250)
+  email          String?          @db.VarChar(250)
+  country        String?          @db.VarChar(250)
+  language       String?          @db.VarChar(250)
+  discord_users  discord_users[]
+  linkedin_users linkedin_users[]
+  wallets        wallets[]
+}
+
+model wallets {
+  id      Int     @id @default(autoincrement())
+  user_id Int
+  address String? @db.VarChar(255)
+  chain   String? @db.VarChar(255)
+  users   users   @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "wallets_ibfk_1")
+
+  @@index([user_id], map: "user_id")
+}
+
+model discord_users {
+  id       Int     @id @default(autoincrement())
+  user_id  Int
+  username String? @db.VarChar(255)
+  avatar   String? @db.VarChar(255)
+  users    users   @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "discord_users_ibfk_1")
+
+  @@index([user_id], map: "user_id")
+}
+
+model linkedin_users {
+  id              Int     @id @default(autoincrement())
+  user_id         Int
+  profile_picture String? @db.VarChar(255)
+  linkedin_id     String? @db.VarChar(255)
+  users           users   @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "linkedin_users_ibfk_1")
+
+  @@index([user_id], map: "user_id")
+}
+
+model cookies {
+  id        Int      @id @default(autoincrement())
+  cookie    String?  @db.VarChar(255)
+  timestamp DateTime @default(now()) @db.Timestamp(0)
+}

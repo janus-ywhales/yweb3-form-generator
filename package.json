@@ -7,12 +7,50 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/dark-theme": "^2.0.2",
+    "@ant-design/icons": "^4.7.0",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.10.3",
+    "@mui/material": "^5.10.3",
+    "@prisma/client": "^4.2.1",
+    "@rainbow-me/rainbowkit": "^0.5.0",
+    "@solana-mobile/wallet-adapter-mobile": "^0.9.0",
+    "@solana/wallet-adapter-base": "^0.9.16",
+    "@solana/wallet-adapter-react": "^0.15.18",
+    "@solana/wallet-adapter-react-ui": "^0.9.16",
+    "@solana/wallet-adapter-wallets": "^0.18.7",
+    "@solana/web3.js": "^1.55.0",
+    "antd": "^4.22.7",
+    "axios": "^0.27.2",
+    "connectkit": "0.0.2",
+    "discord.js": "^14.3.0",
+    "ethers": "^5.7.0",
+    "install": "^0.13.0",
+    "iron-session": "^6.2.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
     "next": "12.1.4",
+    "next-session": "^4.0.5",
+    "npm": "^8.18.0",
+    "prettier": "^2.7.1",
     "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "react-dom": "18.0.0",
+    "react-router-dom": "^6.3.0",
+    "styled-components": "^5.3.5",
+    "typescript": "^4.7.4",
+    "validator": "^13.7.0",
+    "wagmi": "^0.6.4"
   },
   "devDependencies": {
+    "@types/node": "^18.7.11",
+    "@types/react": "^18.0.1",
+    "autoprefixer": "^10.4.8",
     "eslint": "8.12.0",
-    "eslint-config-next": "12.1.4"
+    "eslint-config-next": "12.1.4",
+    "postcss": "^8.4.16",
+    "prisma": "^4.2.1",
+    "tailwindcss": "^3.1.8"
   }
 }
