@@ -6,7 +6,6 @@ const OAuthScope = ['identify'].join(" ")
 
 
 export default withIronSessionApiRoute(async (req, res) => {
-    console.log('req.query.redirect_uri', `${process.env.DOMAIN}/api/auth/discord/callback`)
     if(req.query.error === 'access_denied') {
       res.redirect(`/?currentStep=2&session=${req.query.state}`)
     }
@@ -63,7 +62,6 @@ export default withIronSessionApiRoute(async (req, res) => {
 
     res.redirect(`/?currentStep=2&session=${req.query.state}`)
     } catch (e) {
-      throw new Error(e)
       console.error(e)
       res.redirect('/')
       return
