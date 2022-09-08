@@ -6,6 +6,8 @@ const OAuthScope = ['identify'].join(" ")
 
 
 export default withIronSessionApiRoute(async (req, res) => {
+
+    console.log('req.query.redirect_uri', req.query.redirect_uri)
     if(req.query.error === 'access_denied') {
       res.redirect(`/?currentStep=2&session=${req.query.state}`)
     }

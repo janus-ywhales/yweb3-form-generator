@@ -42,7 +42,7 @@ export default function SocialForm() {
                     <StyledButton>Connect Discord</StyledButton>
                 </Link>
             }
-            { false ?
+            { linkedinInfo ?
                 <StyledButton disabled={true} startIcon={<CheckCircle/>}>LinkedIn Connected</StyledButton> :
                 <Link href={`/api/auth/linkedin/login?session=${query.session}`} passHref>
                     <StyledButton>Connect LinkedIn</StyledButton>

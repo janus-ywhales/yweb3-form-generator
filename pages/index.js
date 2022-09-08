@@ -17,11 +17,18 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
   
   useEffect(() => {
-      isValidCookie(query.session).then((res) => {
-        const isValid = res.data.isValid
-        setIsSessionCookieValid(isValid)
+      if(!query.session) {
         setIsLoading(false)
-      }) 
+        setIsSessionCookieValid(false)
+      } else {
+        isValidCookie(query.session).then((res) => {
+          const isValid = res.data.isValid
+          setIsLoading(false)
+          setIsSessionCookieValid(isValid)
+        })
+      }
+
+
   })
 
   const renderComponent = () => {
@@ -30,7 +37,7 @@ export default function Home() {
     } else if(isLoading) {
       return <div></div>
     } else {
-      return <DefaultErrorPage statusCode={404} />
+      return <iv></iv>
     }
   }
 
