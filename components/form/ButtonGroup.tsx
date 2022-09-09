@@ -13,16 +13,13 @@ export default function ButtonGroup() {
 
     const getShouldIncrementStep = () => {
         let shouldIncrementStep = true
-        // if(currentStep >= 0 && false) {
         if(currentStep === 0 && !getIsUserInfoValid()) {
            shouldIncrementStep = false
         }
-        // if(currentStep === 1 && false) {
         if(currentStep >= 1 && !areWalletsValid()) {
             shouldIncrementStep = false
             message.error('At least one wallet must be connected')
         }
-        // if(currentStep === 2 && )
         return shouldIncrementStep
     }
 
@@ -74,7 +71,7 @@ export default function ButtonGroup() {
                         })
                         message.success("Information submitted successfully.")
                     }}
-                    disabled={ !areWalletsValid() || !getIsSocialMediaInfoValid()}
+                    disabled={!getIsSocialMediaInfoValid()}
                 >
 
                     Done
