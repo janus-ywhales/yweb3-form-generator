@@ -36,7 +36,7 @@ export default function SocialForm() {
 
     return (
         <div className="flex justify-evenly align-center items-center h-full flex-col">
-            { false ? 
+            { discordInfo ? 
                 <StyledButton disabled={true} startIcon={<CheckCircle/>}>Discord Connected</StyledButton> :
                 <Link href={`/api/auth/discord/login?session=${query.session}`} passHref>
                     <StyledButton>Connect Discord</StyledButton>
