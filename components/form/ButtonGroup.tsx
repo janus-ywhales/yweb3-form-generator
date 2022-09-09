@@ -69,7 +69,12 @@ export default function ButtonGroup() {
                             discordInfo,
                             linkedinInfo
                         })
-                        message.success("Information submitted successfully.")
+                            .then(() => {
+                                message.success("Information submitted successfully.")
+                            })
+                            .catch((e) => {
+                                console.error(e)
+                            })
                     }}
                     disabled={ !areWalletsValid() || !getIsSocialMediaInfoValid()}
                 >
