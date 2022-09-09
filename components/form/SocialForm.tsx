@@ -3,13 +3,15 @@ import { AxiosResponse } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
-import { DISCORD_CDN_BASE_URL, DISCORD_INFO } from "../../consts";
+import { DISCORD_CDN_BASE_URL, DISCORD_INFO, WALLET_INFO } from "../../consts";
 import { UserContext } from "../../context/UserContext";
 import { getDiscordInfo, getLinkedinInfo } from "../../requests";
 import { StyledButton } from "./step-form/ui";
+import { WalletContext } from "../../context/WalletContext"
 
 export default function SocialForm() {
     const { discordInfo, setDiscordInfo, linkedinInfo, setLinkedinInfo, setCountry, setLanguage } = useContext(UserContext)
+    const { setWallets, wallets } = useContext(WalletContext)
     const { query } = useRouter()
 
     useEffect(() => {
@@ -32,6 +34,13 @@ export default function SocialForm() {
                 })
             }    
         })
+
+        const savedWalletInfo = sessionStorage.getItem(WALLET_INFO)
+
+        if(savedWalletInfo && wallets.length === 0 ) {
+            setWallets(JSON.parse(savedWalletInfo))
+        }
+
     }, [])
 
     return (

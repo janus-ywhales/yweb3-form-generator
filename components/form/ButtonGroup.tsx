@@ -71,7 +71,7 @@ export default function ButtonGroup() {
                         })
                         message.success("Information submitted successfully.")
                     }}
-                    disabled={!getIsSocialMediaInfoValid()}
+                    disabled={ !areWalletsValid() || !getIsSocialMediaInfoValid()}
                 >
 
                     Done
