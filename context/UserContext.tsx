@@ -32,7 +32,7 @@ export const useUserContext = () => {
             setFirstNameValidationErrors(uniq(firstNameValidationErrors.concat(["First name is required"])))
         }
 
-        if(lastName === '') {
+    if(lastName === '') {
             areAllFieldsValid = false
             setLastNameValidationErrors(uniq(lastNameValidationErrors.concat(['Last name is required'])))   
         }
@@ -58,7 +58,7 @@ export const useUserContext = () => {
         return areAllFieldsValid
     }
 
-    const getIsSocialMediaInfoValid = () => discordInfo && linkedinInfo
+    const getIsSocialMediaInfoValid = () => discordInfo !== undefined && linkedinInfo !== undefined
 
 
     return {

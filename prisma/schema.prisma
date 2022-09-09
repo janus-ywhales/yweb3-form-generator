@@ -32,11 +32,12 @@ model wallets {
 }
 
 model discord_users {
-  id       Int     @id @default(autoincrement())
-  user_id  Int
-  username String? @db.VarChar(255)
-  avatar   String? @db.VarChar(255)
-  users    users   @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "discord_users_ibfk_1")
+  id         Int     @id @default(autoincrement())
+  user_id    Int
+  username   String? @db.VarChar(255)
+  avatar     String? @db.VarChar(255)
+  discord_id String? @db.VarChar(255)
+  users      users   @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "discord_users_ibfk_1")
 
   @@index([user_id], map: "user_id")
 }
