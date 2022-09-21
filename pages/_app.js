@@ -9,6 +9,7 @@ import '@fontsource/roboto/700.css';
 
 import { useStepContext, StepContext } from '../context/StepContext'
 import { useUserContext, UserContext } from '../context/UserContext'
+import { useLegalContext, LegalContext } from '../context/LegalContext'
 import { useWalletContext, WalletContext } from '../context/WalletContext'
 import { ConnectKitProvider, getDefaultClient } from "connectkit"
 import { useChainContext, ChainContext} from '../context/ChainContext'
@@ -63,20 +64,22 @@ function MyApp({ Component, pageProps }) {
       <UserContext.Provider value={useUserContext()}>
         <StepContext.Provider value={useStepContext()}>
           <WalletContext.Provider value={useWalletContext()}>
-            <ConnectionProvider endpoint={endpoint}>
-              <WalletProvider wallets={wallets}>
-                <WalletModalProvider>
-                  <WagmiConfig client={wagmiClient}>
-                    <ConnectKitProvider>
-                      <ThemeProvider theme={darkTheme}>
-                        <CssBaseline />
-                        <Component {...pageProps} />
-                      </ThemeProvider>
-                    </ConnectKitProvider>
-                  </WagmiConfig>
-                </WalletModalProvider>
-              </WalletProvider>
-            </ConnectionProvider>
+            <LegalContext.Provider value={useLegalContext()}>
+              <ConnectionProvider endpoint={endpoint}>
+                <WalletProvider wallets={wallets}>
+                  <WalletModalProvider>
+                    <WagmiConfig client={wagmiClient}>
+                      <ConnectKitProvider>
+                        <ThemeProvider theme={darkTheme}>
+                          <CssBaseline />
+                          <Component {...pageProps} />
+                        </ThemeProvider>
+                      </ConnectKitProvider>
+                    </WagmiConfig>
+                  </WalletModalProvider>
+                </WalletProvider>
+              </ConnectionProvider>
+            </LegalContext.Provider>
           </WalletContext.Provider>
         </StepContext.Provider>
       </UserContext.Provider>

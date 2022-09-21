@@ -4,9 +4,10 @@ import { useRouter } from "next/router"
 import SocialForm from "../SocialForm"
 import BasicForm from "./BasicForm"
 import ConnectForm from "./ConnectForm"
+import LegalForm from "./LegalForm"
 
 export default function MainForm() {
-    const { isCurrentStepBasic, isCurrentStepConnect, isCurrentStepSocial, setCurrentStep, currentStep } = useContext(StepContext)
+    const { isCurrentStepBasic, isCurrentStepConnect, isCurrentStepSocial, isCurrentStepLegal, setCurrentStep, currentStep } = useContext(StepContext)
     const { query } = useRouter()
     
 
@@ -27,6 +28,9 @@ export default function MainForm() {
             )}
             { isCurrentStepSocial() && (
                 <SocialForm />
+            )}
+            { isCurrentStepLegal() && (
+                <LegalForm />
             )}
         </div>
     )

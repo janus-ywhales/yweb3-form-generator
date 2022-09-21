@@ -16,6 +16,10 @@ export const useStepContext = () => {
           title: 'Connect Social Media',
           content: 'Last-content',
         },
+        {
+          title: 'Terms and Conditions',
+          content: 'Last Content'
+        }
       ]
     
 
@@ -27,6 +31,7 @@ export const useStepContext = () => {
     const isCurrentStepBasic = () => currentStep === 0
     const isCurrentStepConnect = () => currentStep === 1
     const isCurrentStepSocial = () => currentStep === 2
+    const isCurrentStepLegal = () => currentStep === 3
     return {
         currentStep,
         steps,
@@ -38,6 +43,7 @@ export const useStepContext = () => {
         isCurrentStepBasic,
         isCurrentStepConnect,
         isCurrentStepSocial,
+        isCurrentStepLegal,
         isPastFirstStep
     }
 }

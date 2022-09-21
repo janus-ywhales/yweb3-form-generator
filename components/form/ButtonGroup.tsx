@@ -1,6 +1,7 @@
 import { Button, message } from "antd"
 import { useContext } from "react"
 import { USER_INFO, WALLET_INFO } from "../../consts"
+import { LegalContext } from "../../context/LegalContext"
 import { StepContext } from "../../context/StepContext"
 import { UserContext } from "../../context/UserContext"
 import { WalletContext } from "../../context/WalletContext"
@@ -10,15 +11,20 @@ export default function ButtonGroup() {
     const { currentStep, steps, isCurrentStepLast, isCurrentStepInBounds, incrementStep, decrementStep, isPastFirstStep } = useContext(StepContext)
     const { firstName, lastName, email, company, country, language, getIsUserInfoValid, discordInfo, linkedinInfo, getIsSocialMediaInfoValid } = useContext(UserContext)
     const { wallets, areWalletsValid } = useContext(WalletContext)
+    const { areAllClausesChecked } = useContext(LegalContext)
 
     const getShouldIncrementStep = () => {
         let shouldIncrementStep = true
         if(currentStep === 0 && !getIsUserInfoValid()) {
            shouldIncrementStep = false
         }
-        if(currentStep >= 1 && !areWalletsValid()) {
+        if(currentStep === 1 && !areWalletsValid()) {
             shouldIncrementStep = false
             message.error('At least one wallet must be connected')
+        }
+        if(currentStep === 2 && !getIsSocialMediaInfoValid()) {
+            shouldIncrementStep = false
+            message.error('Linkedin profile and Discord account must be connected')
         }
         return shouldIncrementStep
     }
@@ -76,7 +82,7 @@ export default function ButtonGroup() {
                                 console.error(e)
                             })
                     }}
-                    disabled={ !areWalletsValid() || !getIsSocialMediaInfoValid()}
+                    disabled={ !areWalletsValid() || !getIsSocialMediaInfoValid() || !areAllClausesChecked()}
                 >
 
                     Done
